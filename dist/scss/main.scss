@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import "./resets";
+@import "./variables";
+
+//Function
+@function fontWeight($weight) {
+  @return map-get($font-weights, $weight);
+}
+
+//Mixin
+@mixin buttonProperties() {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: fontWeight(regular);
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+body {
+  display: flex;
+  flex-flow: column wrap;
+  height: 100vh;
+  text-align: center;
+  background-color: map-get($map: $colors, $key: primary);
+  color: map-get($map: $colors, $key: accent);
+}
+
+main {
+  h1 {
+    font-size: 4rem;
+    margin: 2rem 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin: 0 2rem;
+    max-width: 100rem;
+    line-height: 1.8;
+  }
+
+  .btn {
+    background-color: map-get($map: $colors, $key: button);
+    border: 1px solid map-get($map: $colors, $key: button);
+    color: map-get($map: $colors, $key: accent);
+    margin: 2rem 0;
+    @include buttonProperties;
+
+    &:hover {
+      background-color: map-get($map: $colors, $key: primary);
+    }
+  }
+}
